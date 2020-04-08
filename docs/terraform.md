@@ -4,13 +4,14 @@
 |------|-------------|:----:|:-----:|:-----:|
 | allow_major_version_upgrade | Allow major version upgrade | string | `false` | no |
 | apply_immediately | Specifies whether any database modifications are applied immediately, or during the next maintenance window | string | `false` | no |
-| attributes | Additional attributes (e.g. `1`) | list | `<list>` | no |
+| attributes | Additional attributes (e.g. `1`) | list(string) | `<list>` | no |
 | auto_minor_version_upgrade | Allow automated minor version upgrade (e.g. from Postgres 9.5.3 to Postgres 9.5.4) | string | `true` | no |
 | backup_retention_period | Backup retention period in days. Must be > 0 to enable backups | string | `0` | no |
 | backup_window | When AWS can perform DB snapshots, can't overlap with maintenance window | string | `22:00-03:00` | no |
 | copy_tags_to_snapshot | Copy tags from DB to a snapshot | string | `true` | no |
 | database_port | Database port (_e.g._ `3306` for `MySQL`). Used in the DB Security Group to allow access to the DB instance from the provided `security_group_ids` | string | - | yes |
-| db_parameter | A list of DB parameters to apply. Note that parameters may differ from a DB family to another | list | `<list>` | no |
+| db_parameter | A list of DB parameters to apply. Note that parameters may differ from a DB family to another | list(string) | `<list>` | no |
+| deletion_protection | Set to true to enable deletion protection on the RDS instance | bool | `false` | no |
 | delimiter | Delimiter to be used between `name`, `namespace`, `stage` and `attributes` | string | `-` | no |
 | dns_zone_id | The ID of the DNS Zone in Route53 where a new DNS record will be created for the DB host name | string | `` | no |
 | enabled | Set to false to prevent the module from creating any resources | string | `true` | no |
@@ -28,14 +29,14 @@
 | publicly_accessible | Determines if database can be publicly available (NOT recommended) | string | `false` | no |
 | replicate_source_db | Specifies that this resource is a Replicate database, and to use this value as the source database. This correlates to the identifier of another Amazon RDS Database to replicate. Note that if you are creating a cross-region replica of an encrypted database you will also need to specify a kms_key_id. See [DB Instance Replication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Replication.html) and [Working with PostgreSQL and MySQL Read Replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html) for more information on using Replication. | string | - | yes |
 | same_region | Whether this replica is in the same region as the master. | string | `false` | no |
-| security_group_ids | The IDs of the security groups from which to allow `ingress` traffic to the DB instance | list | `<list>` | no |
+| security_group_ids | The IDs of the security groups from which to allow `ingress` traffic to the DB instance | list(string) | `<list>` | no |
 | skip_final_snapshot | If true (default), no snapshot will be made before deleting DB | string | `true` | no |
 | snapshot_identifier | Snapshot identifier e.g: rds:production-2015-06-26-06-05. If specified, the module create cluster from the snapshot | string | `` | no |
 | stage | Stage (e.g. `prod`, `dev`, `staging`) | string | - | yes |
 | storage_encrypted | Specifies whether the DB instance is encrypted. The default is false if not specified. | string | `false` | no |
 | storage_type | One of 'standard' (magnetic), 'gp2' (general purpose SSD), or 'io1' (provisioned IOPS SSD). | string | `standard` | no |
-| subnet_ids | List of subnets for the DB | list | - | yes |
-| tags | Additional tags (e.g. map(`BusinessUnit`,`XYZ`) | map | `<map>` | no |
+| subnet_ids | List of subnets for the DB | list(string) | - | yes |
+| tags | Additional tags (e.g. map(`BusinessUnit`,`XYZ`) | map(string) | `<map>` | no |
 | vpc_id | VPC ID the DB instance will be created in | string | - | yes |
 
 ## Outputs

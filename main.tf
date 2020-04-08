@@ -1,5 +1,5 @@
 module "label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.15.0"
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.16.0"
   enabled    = var.enabled
   namespace  = var.namespace
   name       = var.name
@@ -10,7 +10,7 @@ module "label" {
 }
 
 module "final_snapshot_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.15.0"
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.16.0"
   enabled    = var.enabled
   namespace  = var.namespace
   name       = var.name
@@ -60,6 +60,7 @@ resource "aws_db_instance" "default" {
   kms_key_id                  = local.kms_key_id
   monitoring_interval         = var.monitoring_interval
   replicate_source_db         = var.replicate_source_db
+  deletion_protection         = var.deletion_protection
 }
 
 resource "aws_db_subnet_group" "default" {

@@ -194,3 +194,8 @@ variable "same_region" {
   default     = "false"
 }
 
+variable "deletion_protection" {
+  type        = bool
+  description = "Set to true to enable deletion protection on the RDS instance"
+  default     = false
+}
