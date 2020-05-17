@@ -36,6 +36,12 @@ variable "security_group_ids" {
   description = "The IDs of the security groups from which to allow `ingress` traffic to the DB instance"
 }
 
+variable "allowed_cidr_blocks" {
+  type        = list(string)
+  default     = []
+  description = "The whitelisted CIDRs which to allow `ingress` traffic to the DB instance"
+}
+
 variable "database_port" {
   description = "Database port (_e.g._ `3306` for `MySQL`). Used in the DB Security Group to allow access to the DB instance from the provided `security_group_ids`"
 }
