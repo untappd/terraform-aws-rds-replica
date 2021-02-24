@@ -1,5 +1,5 @@
 module "label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.16.0"
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.24.1"
   enabled    = var.enabled
   namespace  = var.namespace
   name       = var.name
@@ -10,7 +10,7 @@ module "label" {
 }
 
 module "final_snapshot_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.16.0"
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.24.1"
   enabled    = var.enabled
   namespace  = var.namespace
   name       = var.name
@@ -121,4 +121,3 @@ module "dns_host_name" {
   zone_id = var.dns_zone_id
   records = aws_db_instance.default.*.address
 }
-
